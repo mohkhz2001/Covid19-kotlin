@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import com.mohkhz.covid_19tracker_kotlin.API.ApiRequest
 import com.mohkhz.covid_19tracker_kotlin.API.AppConfig
 import com.mohkhz.covid_19tracker_kotlin.Model.CountriesInfoList
-import com.mohkhz.covid_19tracker_kotlin.Model.CountryInfo
+import com.mohkhz.covid_19tracker_kotlin.Model.CountryData
 import com.mohkhz.covid_19tracker_kotlin.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_country.*
@@ -24,9 +24,9 @@ import java.text.DecimalFormat
 
 class CountryFragment : Fragment() {
 
-    var nameList = MutableList<String>(0, { "" })
+    var nameList = MutableList(0, { "" })
     lateinit var request: ApiRequest
-    var countriesInfo = ArrayList<CountryInfo>()
+    var countriesInfo = ArrayList<CountryData>()
 
 
     override fun onCreateView(
@@ -103,7 +103,10 @@ class CountryFragment : Fragment() {
         txt_patient_all.text = decimalFormat.format(countryChoosed.cases)
         txt_recovered_all.text = decimalFormat.format(countryChoosed.recovered)
         txt_death_all.text = decimalFormat.format(countryChoosed.deaths)
-        Picasso.get().load(choose).into(flag)
+
+        countryName.text = countryChoosed.country
+
+        Picasso.get().load(countryChoosed.countryInfo.flag).into(flag)
 
     }
 
