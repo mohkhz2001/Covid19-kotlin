@@ -14,6 +14,7 @@ import com.mohkhz.covid_19tracker_kotlin.API.AppConfig
 import com.mohkhz.covid_19tracker_kotlin.Model.CountriesInfoList
 import com.mohkhz.covid_19tracker_kotlin.Model.CountryInfo
 import com.mohkhz.covid_19tracker_kotlin.R
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_country.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -93,7 +94,7 @@ class CountryFragment : Fragment() {
             txt_patient_number.text = "N/A"
             txt_Recovered_number.text = "N/A"
             txt_death_number.text = "N/A"
-        }else{
+        } else {
             txt_patient_number.text = decimalFormat.format(countryChoosed.todayCases)
             txt_Recovered_number.text = decimalFormat.format(countryChoosed.todayRecovered)
             txt_death_number.text = decimalFormat.format(countryChoosed.todayDeaths)
@@ -102,6 +103,8 @@ class CountryFragment : Fragment() {
         txt_patient_all.text = decimalFormat.format(countryChoosed.cases)
         txt_recovered_all.text = decimalFormat.format(countryChoosed.recovered)
         txt_death_all.text = decimalFormat.format(countryChoosed.deaths)
+        Picasso.get().load(choose).into(flag)
+
     }
 
 }
