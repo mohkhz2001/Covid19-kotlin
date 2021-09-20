@@ -1,14 +1,14 @@
 package com.mohkhz.covid_19tracker_kotlin.Model
 
 
-data class CountryInfo(
+data class CountryData(
     val active: Int,
     val activePerOneMillion: Double,
     val cases: Int,
     val casesPerOneMillion: Int,
     val continent: String,
     val country: String,
-    val countryInfo: CountryData,
+    val countryInfo: CountryInfo,
     val critical: Int,
     val criticalPerOneMillion: Double,
     val deaths: Int,
